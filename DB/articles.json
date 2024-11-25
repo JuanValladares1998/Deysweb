@@ -1,0 +1,37 @@
+{
+    "1": {
+        "name": "switch",
+        "description": "1232",
+        "category": "redes",
+        "location": "ub1",
+        "quantity": 277
+    },
+    "2": {
+        "name": "router",
+        "description": "qwerwer",
+        "category": "redes",
+        "location": "ub2",
+        "quantity": 11
+    },
+    "3": {
+        "name": "pantalla 32\"",
+        "description": "2334324",
+        "category": "accesorio",
+        "location": "ub3",
+        "quantity": 0
+    },
+    "123": {
+        "name": "123",
+        "description": "123",
+        "category": "123",
+        "location": "132",
+        "quantity": 0
+    },
+    "12": {
+        "name": "12",
+        "description": "12",
+        "category": "12",
+        "location": "12",
+        "quantity": 0
+    }
+}
