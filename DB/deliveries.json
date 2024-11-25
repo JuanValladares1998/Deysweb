@@ -1,0 +1,18 @@
+[
+    {
+        "destination": "Destino 29",
+        "priority": "Baja",
+        "vehicle": "Cami\u00f3n 1",
+        "status": "Preparando paquete",
+        "incident": "Ninguna",
+        "observations": "Observaci\u00f3n 22"
+    },
+    {
+        "destination": "Destino 85",
+        "priority": "Baja",
+        "vehicle": "Cami\u00f3n 1",
+        "status": "Preparando paquete",
+        "incident": "Retraso",
+        "observations": "Observaci\u00f3n 35"
+    }
+]
