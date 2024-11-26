@@ -38,13 +38,13 @@ def open_dashboard(username):
             main.run_login()
 
     # Botones principales
-    button_almacen = tk.Button(dashboard, text="Almacén", command=open_almacen, width=20, height=2)
+    button_almacen = tk.Button(dashboard, text="Adquisición de Artículos", command=open_almacen, width=20, height=2)
     button_almacen.pack(pady=10)
 
-    button_compras = tk.Button(dashboard, text="Compras", command=open_compras, width=20, height=2)
+    button_compras = tk.Button(dashboard, text="Recepción de Artículos", command=open_compras, width=20, height=2)
     button_compras.pack(pady=10)
 
-    button_distribucion = tk.Button(dashboard, text="Distribución", width=20, height=2, command=open_distribucion)
+    button_distribucion = tk.Button(dashboard, text="Gestión de Distribución", width=20, height=2, command=open_distribucion)
     button_distribucion.pack(pady=10)
 
     button_logout = tk.Button(dashboard, text="Cerrar Sesión", command=logout, width=20, height=2, bg="red", fg="white")

@@ -33,5 +33,12 @@
         "category": "12",
         "location": "12",
         "quantity": 0
+    },
+    "342": {
+        "name": "pc",
+        "description": "weqweqwe",
+        "category": "redes",
+        "location": "ub6",
+        "quantity": 0
     }
 }

@@ -183,3 +183,79 @@ def open_almacen_window():
     ).pack(pady=5)
 
     almacen_window.mainloop()
+
+# Función para registrar ingreso de artículos
+def open_register_entry_window(tree):
+    def register_article_entry():
+        name = combobox_name.get()
+        quantity = entry_quantity.get()
+
+        if name and quantity.isdigit():
+            with open(ARTICLES_FILE, "r+") as file:
+                articles = json.load(file)
+                for code, article in articles.items():
+                    if article["name"] == name:
+                        articles[code]["quantity"] += int(quantity)
+                        file.seek(0)
+                        json.dump(articles, file, indent=4)
+                        messagebox.showinfo("Éxito", f"Ingresaron {quantity} unidades de {name}.")
+                        entry_window.destroy()
+                        load_articles_into_table(tree)  # Refrescar la tabla con las nuevas cantidades
+                        return
+                messagebox.showerror("Error", "El artículo no existe. Regístralo primero.")
+        else:
+            messagebox.showerror("Error", "Por favor, completa todos los campos correctamente.")
+
+    entry_window = tk.Toplevel()
+    entry_window.title("Registrar Ingreso de Artículo")
+    entry_window.geometry("400x200")
+
+    tk.Label(entry_window, text="Nombre del artículo:").pack(pady=5)
+    combobox_name = Combobox(entry_window, values=load_article_names(), state="readonly")
+    combobox_name.pack(pady=5)
+
+    tk.Label(entry_window, text="Cantidad ingresada:").pack(pady=5)
+    entry_quantity = tk.Entry(entry_window)
+    entry_quantity.pack(pady=5)
+
+    tk.Button(entry_window, text="Registrar Ingreso", command=register_article_entry).pack(pady=10)
+
+# Función para actualizar existencias
+def open_update_stock_window(tree):
+    def update_stock():
+        name = combobox_name.get()
+        quantity_used = entry_quantity.get()
+
+        if name and quantity_used.isdigit():
+            with open(ARTICLES_FILE, "r+") as file:
+                articles = json.load(file)
+                for code, article in articles.items():
+                    if article["name"] == name:
+                        if article["quantity"] >= int(quantity_used):
+                            articles[code]["quantity"] -= int(quantity_used)
+                            file.seek(0)
+                            json.dump(articles, file, indent=4)
+                            messagebox.showinfo("Éxito", f"Se usaron {quantity_used} unidades de {name}.")
+                            update_window.destroy()
+                            load_articles_into_table(tree)  # Refrescar la tabla con las nuevas cantidades
+                            return
+                        else:
+                            messagebox.showerror("Error", "No hay suficientes existencias para esta operación.")
+                            return
+                messagebox.showerror("Error", "El artículo no existe.")
+        else:
+            messagebox.showerror("Error", "Por favor, completa todos los campos correctamente.")
+
+    update_window = tk.Toplevel()
+    update_window.title("Actualizar Existencias")
+    update_window.geometry("400x200")
+
+    tk.Label(update_window, text="Nombre del artículo:").pack(pady=5)
+    combobox_name = Combobox(update_window, values=load_article_names(), state="readonly")
+    combobox_name.pack(pady=5)
+
+    tk.Label(update_window, text="Cantidad gastada:").pack(pady=5)
+    entry_quantity = tk.Entry(update_window)
+    entry_quantity.pack(pady=5)
+
+    tk.Button(update_window, text="Actualizar", command=update_stock).pack(pady=10)
